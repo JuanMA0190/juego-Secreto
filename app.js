@@ -1,12 +1,3 @@
-/*let titulo = document.querySelector('h1'); //Esta variable tiene almacenada un objeto que representa al h1 del html.
-titulo.innerHTML = 'Juego del número secreto';
-
-//let contenidoH1 = titulo.innerHTML; //Devuelve el valor que tenga h1 como tipo String y lo almacena en la variable.
-
-
-let parrafo = document.querySelector('p');
-parrafo.innerHTML = 'Indica un número del 1 al 10';
-*/
 let numeroSecreto = 0;
 let intentos = 0;
 let listaNumerosSorteados = [];
@@ -27,20 +18,12 @@ function asignarTextoElemento(elemento, texto){
 }
 
 function verificarIntento(){
-    //Por más que la etiqueta input tenga la propiedad number y solo se coloque números al obtener el valor este se convierte en String, por tanto, si queremos tener un number debemos castearlo.
-    let numeroUsuario = parseInt(document.getElementById('valorUsuario').value);//La función getElementById() sirve para buscar un objeto por el id, cuando lo encuentra devuelve un valor object por tanto si necesitamos el valor del mismo ocupamos el atributo value para traer el mismo.
-    
-    /*
-    console.log(numeroUsuario);
-    console.log(numeroSecreto);
-    console.log(numeroSecreto === numeroUsuario);//El triple igual a diferencia del doble igual, compara tipo de dato y valor, mientras que el doble igual solo compara el valor más no el tipo. Retorna un booleano.*/
-
+    let numeroUsuario = parseInt(document.getElementById('valorUsuario').value);    
     if((numeroSecreto === numeroUsuario)){
         //El usuario acerto
         asignarTextoElemento('p',`Acertaste el número secreto es ${numeroUsuario}. Felicidades lo adivinaste en ${intentos} ${intentos > 1 ? 'intentos' : 'intento'}!`);
-
         //Se habilita la caja de texto que previamente se encuentra deshabilitada, para que el usuario pueda jugar de nuevo
-        document.getElementById('reiniciar').removeAttribute('disabled'); //removeAttributte() espera el nombre del atributo que se quiera remover
+        document.getElementById('reiniciar').removeAttribute('disabled');
 
     }else{
         //El usuario no acerto
@@ -57,14 +40,13 @@ function verificarIntento(){
 
 //Vacia la caja de texto donde el usuario digita el número
 function limpiarCaja(){
-    document.querySelector('#valorUsuario').value = '';//Otra forma de obtener el valor de la caja de texto por id, solo que esta vez utilizando el metodo querySelector. value('') vacía la caja de texto.
+    document.querySelector('#valorUsuario').value = '';
     return;
 }
 
 function generarNumeroAleatorio(){
     let numeroGenerado = Math.floor(Math.random()*numeroMaximo)+1;
-    console.log(numeroGenerado);
-    console.log(listaNumerosSorteados)
+
     if(listaNumerosSorteados.length === numeroMaximo){
         asignarTextoElemento('p', 'Ya se sortearon todos los números posibles');
         document.querySelector('#intento').setAttribute('disabled', 'true');
@@ -85,6 +67,6 @@ function generarNumeroAleatorio(){
 function reiniciarJuego(){
     limpiarCaja();
     condicionesIniciales();
-    document.querySelector('#reiniciar').setAttribute('disabled', 'true');//setAttribute setea (cambia) a las propiedades de la etiqueta html con la propiedad y el valor.
+    document.querySelector('#reiniciar').setAttribute('disabled', 'true');
     return;
 }
