@@ -14,7 +14,7 @@ function condicionesIniciales(){
 function asignarTextoElemento(elemento, texto){
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto;
-    return; //return se coloca por buena práctica aun asi esta no devuelva nada.
+    return;
 }
 
 function verificarIntento(){
@@ -22,7 +22,6 @@ function verificarIntento(){
     if((numeroSecreto === numeroUsuario)){
         //El usuario acerto
         asignarTextoElemento('p',`Acertaste el número secreto es ${numeroUsuario}. Felicidades lo adivinaste en ${intentos} ${intentos > 1 ? 'intentos' : 'intento'}!`);
-        //Se habilita la caja de texto que previamente se encuentra deshabilitada, para que el usuario pueda jugar de nuevo
         document.getElementById('reiniciar').removeAttribute('disabled');
 
     }else{
